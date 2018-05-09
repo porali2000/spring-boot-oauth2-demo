@@ -1,4 +1,4 @@
-package com.por.demo;
+package com.por.demo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,14 +12,12 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
+public class DemoAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
 
     @Autowired
     private DataSource dataSource;
@@ -51,6 +49,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .withClient("gigy")
                 .secret("secret")
                 .accessTokenValiditySeconds(500)
+                .refreshTokenValiditySeconds(5000)
                 .scopes("read", "write")
                 .authorizedGrantTypes("password", "refresh_token");
     }

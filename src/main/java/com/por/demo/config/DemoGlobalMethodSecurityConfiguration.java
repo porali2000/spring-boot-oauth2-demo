@@ -1,4 +1,4 @@
-package com.por.demo;
+package com.por.demo.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
@@ -8,9 +8,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecurityExpressionHandler;
 
 @Configuration
-@EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class OAuth2ResourceServerConfig
+public class DemoGlobalMethodSecurityConfiguration
         extends GlobalMethodSecurityConfiguration {
 
     @Override

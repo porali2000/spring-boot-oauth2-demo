@@ -20,7 +20,8 @@ public class UserService implements UserDetailsService {
         user.setUsername(username);
         user.setPassword("123");
         user.setEnabled(true);
-        this.userRepository.save(user);
+        if (null == userRepository.findOneByUsername(username))
+            this.userRepository.save(user);
         return userRepository.findOneByUsername(username);
     }
 }
